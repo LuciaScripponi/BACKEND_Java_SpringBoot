@@ -13,26 +13,26 @@ public class InstrumentoService {
     InstrumentoRepository instrumentoRepository;
 
     public List<Instrumento> listarInstrumentos() {
-        return instrumentoRepository.findAll();
+        return instrumentoRepository.findAll();    //Muestro todos los instrumentos de la BD
     }
 
     public List<Instrumento> listarInstrumentosPorTermino(String termino) {
-        return instrumentoRepository.buscarXtermino(termino);
+        return instrumentoRepository.buscarXtermino(termino);  //Muestros los instrumentos que coincidan con la busqueda
     }
 
     public Optional<Instrumento> listarInstrumentosPorId(int id) {
-        return instrumentoRepository.findById(id);
+        return instrumentoRepository.findById(id);  //Muestro un instrumento por ID
     }
 
     public Instrumento guardarInstrumentos(Instrumento Instrumento) {
-        return instrumentoRepository.save(Instrumento);
+        return instrumentoRepository.save(Instrumento);  //Guardo un instrumento nuevo a la BD
     }
 
     public void borrarInstrumentos(int id) {
-        instrumentoRepository.deleteById(id);
+        instrumentoRepository.deleteById(id);  //Elimino un instrumento de la BD según el ID
     }
 
     public Instrumento modificarInstrumentos(Instrumento Instrumento) {
-        return instrumentoRepository.save(Instrumento);
+        return instrumentoRepository.save(Instrumento);   //Modifico un instrumento de ka BD según el ID
     }
 }

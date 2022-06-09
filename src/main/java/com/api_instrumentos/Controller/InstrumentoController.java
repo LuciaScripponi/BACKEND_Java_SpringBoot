@@ -9,37 +9,37 @@ import java.util.Optional;
 
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RestController
+@RestController   //Controlador de la API REST, con todos los endpoints
 public class InstrumentoController {
     @Autowired
     InstrumentoService instrumentoService;
 
-    @GetMapping("/instrumentos")
+    @GetMapping("/instrumentos")   //Listo todos los instrumentos de la BD
     public List<Instrumento> listarInstrumentos() {
         return instrumentoService.listarInstrumentos();
     }
 
-    @GetMapping("/instrumentos/busqueda/{termino}")
+    @GetMapping("/instrumentos/busqueda/{termino}")  //Listo todos los instrumentos de la BD que coincidan con el termino
     public List<Instrumento> listarInstrumentosPorId(@PathVariable("termino") String termino) {
         return instrumentoService.listarInstrumentosPorTermino(termino);
     }
 
-    @GetMapping("/instrumentoxid/{id}")
+    @GetMapping("/instrumentoxid/{id}")  //Muestro el instrumento que coincida con el ID que me pasan
     public Optional<Instrumento> listarInstrumentosPorId(@PathVariable("id") int id) {
         return instrumentoService.listarInstrumentosPorId(id);
     }
 
-    @PostMapping("/guardarInstrumento")
+    @PostMapping("/guardarInstrumento")  //Creo un nuevo instrumento y lo agrego a la BD
     public Instrumento crearInstrumentos(@RequestBody Instrumento instrumento) {
         return instrumentoService.guardarInstrumentos(instrumento);
     }
 
-    @DeleteMapping("/eliminarxid/{id}")
+    @DeleteMapping("/eliminarxid/{id}")  //Elimino un instrumento de la BD segun el ID que me pasan
     public void borrarInstrumentos(@PathVariable("id") int id) {
         instrumentoService.borrarInstrumentos(id);
     }
 
-    @PutMapping("/actualizarInstrumento/{id}")
+    @PutMapping("/actualizarInstrumento/{id}")  //Modifico un instrumento de la BD segun el ID que me pasan
     public Instrumento modificarInstrumentos(@RequestBody Instrumento instrumento, @PathVariable int id) {
         Instrumento instrumentoActual = instrumentoService.listarInstrumentosPorId(id).get();
         instrumentoActual.setInstrumento(instrumento.getInstrumento());
